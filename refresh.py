@@ -84,7 +84,6 @@ def main():
     if v.returncode != 0:
         die(3, "table failed verification against the .cfg files - nothing committed")
 
-    shutil.copy2(VAULT_DOC, os.path.join(REPO, "PRINTER-SETTINGS-MASTER-TABLE.md"))
 
     m = mirror(os.path.join(BACKUP, "cura-5.13"))
     shutil.copy2(VAULT_DOC, os.path.join(BACKUP, "PRINTER-SETTINGS-MASTER-TABLE.md"))

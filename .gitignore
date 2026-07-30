@@ -1,2 +1,32 @@
+# _TEMPLATE_GITIGNORE — RATIFIED 2026-07-30 (ADR Project Scaffold v2). Copy to repo root as .gitignore, prune per stack.
+
+# Machine output — Data Placement Standard: normal run data lives in data/, never committed
+data/
+*.log
+
+# Secrets — commit REDACTED copies only; the real names go here explicitly, per project
+*.env
+*_keys.env
+*.backup-*.json
+
+# Python
 __pycache__/
 *.pyc
+.venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+
+# Android / Gradle
+.gradle/
+build/
+local.properties
+*.apk
+
+# OS / editor noise
+Thumbs.db
+.DS_Store
+*.bak
+*~
