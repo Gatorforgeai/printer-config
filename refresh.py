@@ -11,9 +11,9 @@ FAILS WHEN: table regeneration fails (uncategorised setting, missing marker) - t
 """
 import argparse, datetime, glob, os, shutil, subprocess, sys
 
-REPO = r"D:\GatorForge\printer-config"
+REPO = r"D:\GatorForge\AI CAD 3D Print Laser\Printer Config"
 CURA = os.path.join(os.environ.get("APPDATA", ""), "cura", "5.13")
-VAULT_DOC = r"D:\Google Drive\_AI_OBS\02 Projects\AI CAD 3D Print Laser\_PRINTER SETTINGS MASTER TABLE.md"
+VAULT_DOC = r"D:\Google Drive\_AI_OBS\02 Projects\AI CAD 3D Print Laser\Printer Config\_PRINTER SETTINGS MASTER TABLE.md"
 BACKUP = r"D:\Google Drive\_AI_OBS\10 Attachments\printer-config-backup"
 SUBS = ("quality_changes", "definition_changes", "user", "variants")
 
