@@ -13,16 +13,16 @@ FAILS WHEN: a profile file is missing (exit 4). An empty [values] section is
 import argparse, configparser, glob, os, sys
 
 PROFILES = [
-    ("creality_base_extruder_0_%233_cr10max_pla.inst.cfg",      "creality_cr10max_cr10max_pla.inst.cfg",      "CR10 PLA 0.2"),
-    ("creality_base_extruder_0_%233_cr10max_pla_03.inst.cfg",   "creality_cr10max_cr10max_pla_03.inst.cfg",   "CR10 PLA 0.3"),
-    ("creality_base_extruder_0_%233_cr10max_petg.inst.cfg",     "creality_cr10max_cr10max_petg.inst.cfg",     "CR10 PETG"),
-    ("creality_base_extruder_0_%233_cr10max_flowtest.inst.cfg", "creality_cr10max_cr10max_flowtest.inst.cfg", "CR10 FLOW"),
-    ("creality_base_extruder_0_%232_ce3pro_pla.inst.cfg",       "creality_ender3pro_ce3pro_pla.inst.cfg",     "E3 PLA"),
-    ("creality_base_extruder_0_%232_ce3pro_petg.inst.cfg",      "creality_ender3pro_ce3pro_petg.inst.cfg",    "E3 PETG"),
-    ("creality_base_extruder_0_%232_ce3pro_tpu.inst.cfg",       "creality_ender3pro_ce3pro_tpu.inst.cfg",     "E3 TPU"),
-    ("creality_base_extruder_0_%232_ce3pro_nylon.inst.cfg",     "creality_ender3pro_ce3pro_nylon.inst.cfg",   "E3 NYLON"),
-    ("creality_base_extruder_0_%232_ce3pro_pla_06.inst.cfg",    "creality_ender3pro_ce3pro_pla_06.inst.cfg",  "E3 PLA 0.6"),
-    ("creality_base_extruder_0_%232_ce3pro_flowtest_06.inst.cfg","creality_ender3pro_ce3pro_flowtest_06.inst.cfg","E3 FLOW 0.6"),
+    ("creality_base_extruder_0_%233_cr10max_pla.inst.cfg",      "creality_cr10max_cr10max_pla.inst.cfg",      "CR10 PLA N0.4 L0.2"),
+    ("creality_base_extruder_0_%233_cr10max_pla_03.inst.cfg",   "creality_cr10max_cr10max_pla_03.inst.cfg",   "CR10 PLA N0.4 L0.3"),
+    ("creality_base_extruder_0_%233_cr10max_petg.inst.cfg",     "creality_cr10max_cr10max_petg.inst.cfg",     "CR10 PETG N0.4 L0.2"),
+    ("creality_base_extruder_0_%233_cr10max_flowtest.inst.cfg", "creality_cr10max_cr10max_flowtest.inst.cfg", "CR10 FLOW N0.4 L0.2"),
+    ("creality_base_extruder_0_%232_ce3pro_pla.inst.cfg",       "creality_ender3pro_ce3pro_pla.inst.cfg",     "E3 PLA N0.8 L0.4"),
+    ("creality_base_extruder_0_%232_ce3pro_petg.inst.cfg",      "creality_ender3pro_ce3pro_petg.inst.cfg",    "E3 PETG N0.8 L0.4"),
+    ("creality_base_extruder_0_%232_ce3pro_tpu.inst.cfg",       "creality_ender3pro_ce3pro_tpu.inst.cfg",     "E3 TPU INCOMPLETE"),
+    ("creality_base_extruder_0_%232_ce3pro_nylon.inst.cfg",     "creality_ender3pro_ce3pro_nylon.inst.cfg",   "E3 NYLON N0.6 L0.3"),
+    ("creality_base_extruder_0_%232_ce3pro_pla_06.inst.cfg",    "creality_ender3pro_ce3pro_pla_06.inst.cfg",  "E3 PLA N0.6 L0.3"),
+    ("creality_base_extruder_0_%232_ce3pro_flowtest_06.inst.cfg","creality_ender3pro_ce3pro_flowtest_06.inst.cfg","E3 FLOW N0.6 L0.3"),
 ]
 
 CATS = [
