@@ -27,7 +27,7 @@ HEIGHT   = 30.0   # taller than the cube: mid-height cut sits clear of the solid
 SEGMENTS = 120    # chord error 0.0055mm - invisible. 0.84mm segments at 30mm/s is
                   # ~36 moves/sec, safe for the CR-10's 8-bit board
 OUT      = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                        "flow_cal_cylinder_32x30.stl")
+                        "cyl32.stl")
 # --------------------------------------------
 
 if SEGMENTS < 3 or DIAM <= 0 or HEIGHT <= 0:
