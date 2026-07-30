@@ -13,6 +13,19 @@ updated: 2026-07-29
 Generated directly from the `.inst.cfg` files on disk on **2026-07-29**, not transcribed by hand.
 Source: `C:\Users\gator\AppData\Roaming\cura\5.13\quality_changes\`
 
+📦 **Version control:** `D:\GatorForge\printer-config` (git, local disk, **no remote - this is
+history, not backup**). Holds a copy of this table plus all 24 `.inst.cfg` files.
+
+💾 **Backup:** `_AI_OBS\10 Attachments\printer-config-backup\` - inside Google Drive, so synced
+offsite with Drive's own per-file version history. Contains **plain copies of all 24 `.inst.cfg`
+files** (restorable with nothing but a file copy - no git needed) plus `printer-config.bundle`
+carrying the full repo history, and `RESTORE.md`. Verified byte-identical to source: 24/24 SHA-256
+match. A bad edit or a Cura upgrade wiping a profile is now a file copy, not a re-tune.
+
+⚠️ The working repo is deliberately **outside** Drive. A live `.git` object store and Drive sync
+corrupt each other; a bundle is a single finished file and syncs safely. **This vault copy of the
+table is the live one** - re-copy into the repo and refresh the backup after changes.
+
 ## How to read it
 
 - **`—` means the setting is not overridden** and inherits from the Cura quality profile /
@@ -49,62 +62,66 @@ minimum move length - longer than most infill moves in a small part. This is why
 
 ## THE TABLE
 
-| Setting | Key | Sc | CR10 PLA 0.2 | CR10 PLA 0.3 | CR10 PETG | CR10 FLOW | E3 PLA | E3 PETG | E3 TPU | E3 NYLON |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Layer & geometry** | | | | | | | | | | |
-| Layer height | `layer_height` | G | `0.2` | `0.3` | `0.2` | `0.2` | `0.4` | `0.4` | — | — |
-| Initial layer height | `layer_height_0` | G | `0.28` | `0.3` | `0.2` | `0.2` | `0.4` | `0.4` | — | — |
-| Line width | `line_width` | E | — | — | — | `0.4` | `0.9` | `0.9` | — | — |
-| Wall line width | `wall_line_width` | E | — | — | — | `0.4` | — | — | — | — |
-| Wall count | `wall_line_count` | E | `3` | `3` | `3` | `1` | `4` | `3` | `3` | `4` |
-| Top/bottom thickness | `top_bottom_thickness` | E | `1.2` | `0.9` | — | — | `1.6` | `1.6` | — | — |
-| Top layers | `top_layers` | E | — | — | — | `0` | — | — | — | — |
-| Bottom layers | `bottom_layers` | E | — | — | — | `3` | — | — | — | — |
-| Infill density % | `infill_sparse_density` | E | `20` | `20` | `20` | `0` | `20` | `20` | `12` | `35` |
-| Print thin walls | `fill_outline_gaps` | E | — | — | — | — | `True` | — | — | — |
-| Spiralize (vase) | `magic_spiralize` | G | — | — | — | `True` | — | — | — | — |
-| Smooth spiralized | `smooth_spiralized_contours` | G | — | — | — | `True` | — | — | — | — |
-| **Temperature** | | | | | | | | | | |
-| Nozzle C | `material_print_temperature` | E | `200` | `210` | `240` | `200` | `215` | `240` | `225` | `260` |
-| Nozzle, layer 1 C | `material_print_temperature_layer_0` | E | `205` | `210` | `245` | `205` | `220` | `245` | `225` | `265` |
-| Bed C (layers 2+) | `material_bed_temperature` | G | `55` | `60` | `80` | `60` | `60` | `80` | — | — |
-| Bed, layer 1 C | `material_bed_temperature_layer_0` | G | `60` | `60` | `80` | `60` | `60` | `80` | — | — |
-| **Flow** | | | | | | | | | | |
-| Flow % | `material_flow` | E | `93.6` | `94.1` | — | `100` | `94.4` | — | — | — |
-| Flow, layer 1 % | `material_flow_layer_0` | E | `100` | `105` | `103` | `100` | `105` | `103` | — | — |
-| Skirt/brim flow % | `skirt_brim_material_flow` | E | — | — | — | — | `100` | — | — | — |
-| **Speed (mm/s)** | | | | | | | | | | |
-| Print (base) | `speed_print` | E | `45` | `55` | `40` | `30` | `35` | `25` | `20` | `35` |
-| Wall | `speed_wall` | E | — | `45` | — | — | — | — | — | — |
-| Outer wall | `speed_wall_0` | E | `25` | `30` | `25` | `30` | `25` | `18` | `18` | `22` |
-| Inner wall | `speed_wall_x` | E | — | — | — | `30` | — | — | — | — |
-| Top/bottom | `speed_topbottom` | E | — | `45` | — | `30` | — | — | — | — |
-| Initial layer | `speed_layer_0` | E | — | `20` | `20` | `20` | — | `15` | `15` | `20` |
-| Travel | `speed_travel` | E | `150` | `150` | `130` | `150` | `150` | `130` | `100` | `120` |
-| **Retraction & travel** | | | | | | | | | | |
-| Retract mm | `retraction_amount` | E | `1.0` | `1.0` | `1.2` | — | `1.5` | `1.5` | `0.6` | `1.5` |
-| Retract mm/s | `retraction_speed` | E | `40` | `40` | `35` | — | `35` | `35` | `25` | `40` |
-| Z hop | `retraction_hop_enabled` | E | `False` | `False` | `False` | `False` | `False` | `False` | `False` | `False` |
-| Extra prime mm3 | `retraction_extra_prime_amount` | E | — | — | — | — | `0.15` | `0.15` | — | — |
-| Combing mode | `retraction_combing` | G | `no_outer_surfaces` | — | — | — | — | — | — | — |
-| **Cooling** | | | | | | | | | | |
-| Fan % | `cool_fan_speed` | E | `100` | `100` | `40` | `100` | `100` | `40` | `40` | `20` |
-| Fan, layer 1 % | `cool_fan_speed_0` | E | `0` | `0` | `0` | `0` | `0` | `0` | — | — |
-| Min layer time s | `cool_min_layer_time` | E | — | — | — | `3` | — | — | — | — |
-| **Surface & seam** | | | | | | | | | | |
-| Z seam | `z_seam_type` | E | `random` | `random` | — | — | `random` | `random` | — | — |
-| Monotonic top/bottom | `skin_monotonic` | E | `True` | — | — | — | — | — | — | — |
-| Ironing | `ironing_enabled` | E | `True` | — | — | — | — | — | — | — |
-| Ironing pattern | `ironing_pattern` | E | `concentric` | — | — | — | — | — | — | — |
-| Ironing flow % | `ironing_flow` | E | `8` | — | — | — | — | — | — | — |
-| Ironing inset mm | `ironing_inset` | E | `0.4` | — | — | — | — | — | — | — |
-| Iron top layer only | `ironing_only_highest_layer` | E | `True` | — | — | — | — | — | — | — |
-| **Dimensional compensation** | | | | | | | | | | |
-| Horizontal expansion | `xy_offset` | E | — | — | — | — | `0.15` | — | — | — |
-| Initial layer h. expansion | `xy_offset_layer_0` | E | `-0.2` | `-0.2` | — | — | — | — | — | — |
-| Hole expansion | `hole_xy_offset` | E | — | — | — | — | `0.15` | — | — | — |
-| **Adhesion** | | | | | | | | | | |
-| Build plate adhesion | `adhesion_type` | G | `brim` | `brim` | `brim` | `skirt` | `brim` | `brim` | — | — |
+<!-- TABLE:BEGIN -->
+*Generated 2026-07-29 20:25 from the .inst.cfg files. Do not edit cells by hand.*
+
+| Setting | Key | Sc | CR10 PLA 0.2 | CR10 PLA 0.3 | CR10 PETG | CR10 FLOW | E3 PLA | E3 PETG | E3 TPU | E3 NYLON | E3 PLA 0.6 | E3 FLOW 0.6 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Layer & geometry** | | | | | | | | | | | | |
+| Layer height | `layer_height` | G | `0.2` | `0.3` | `0.2` | `0.2` | `0.4` | `0.4` | — | `0.3` | `0.3` | `0.3` |
+| Initial layer height | `layer_height_0` | G | `0.28` | `0.3` | `0.2` | `0.2` | `0.4` | `0.4` | — | `0.3` | `0.3` | `0.3` |
+| Line width | `line_width` | E | — | — | — | `0.4` | `0.9` | `0.9` | — | `0.6` | `0.6` | `0.6` |
+| Wall line width | `wall_line_width` | E | — | — | — | `0.4` | — | — | — | `0.6` | `0.6` | `0.6` |
+| Wall count | `wall_line_count` | E | `3` | `3` | `3` | `1` | `4` | `3` | `3` | `4` | `3` | `1` |
+| Top/bottom thickness | `top_bottom_thickness` | E | `1.2` | `0.9` | — | — | `1.6` | `1.6` | — | `1.2` | `1.2` | — |
+| Top layers | `top_layers` | E | — | — | — | `0` | — | — | — | — | — | `0` |
+| Bottom layers | `bottom_layers` | E | — | — | — | `3` | — | — | — | — | — | `3` |
+| Infill density % | `infill_sparse_density` | E | `20` | `20` | `20` | `0` | `20` | `20` | `12` | `35` | `20` | `0` |
+| Print thin walls | `fill_outline_gaps` | E | — | — | — | — | `True` | — | — | — | — | — |
+| Spiralize (vase) | `magic_spiralize` | G | — | — | — | `True` | — | — | — | — | — | `True` |
+| Smooth spiralized | `smooth_spiralized_contours` | G | — | — | — | `True` | — | — | — | — | — | `True` |
+| **Temperature** | | | | | | | | | | | | |
+| Nozzle C | `material_print_temperature` | E | `200` | `210` | `240` | `200` | `215` | `240` | `225` | `250` | `205` | `205` |
+| Nozzle, layer 1 C | `material_print_temperature_layer_0` | E | `205` | `210` | `245` | `205` | `220` | `245` | `225` | `255` | `210` | `210` |
+| Bed C (layers 2+) | `material_bed_temperature` | G | `55` | `60` | `80` | `60` | `60` | `80` | — | `70` | `60` | `60` |
+| Bed, layer 1 C | `material_bed_temperature_layer_0` | G | `60` | `60` | `80` | `60` | `60` | `80` | — | `70` | `60` | `60` |
+| **Flow** | | | | | | | | | | | | |
+| Flow % | `material_flow` | E | `93.6` | `94.1` | — | `100` | `94.4` | — | — | — | `100` | `100` |
+| Flow, layer 1 % | `material_flow_layer_0` | E | `100` | `105` | `103` | `100` | `105` | `103` | — | — | `100` | `100` |
+| Skirt/brim flow % | `skirt_brim_material_flow` | E | — | — | — | — | `100` | — | — | — | — | — |
+| **Speed (mm/s)** | | | | | | | | | | | | |
+| Print (base) | `speed_print` | E | `45` | `55` | `40` | `30` | `35` | `25` | `20` | `35` | `45` | `30` |
+| Wall | `speed_wall` | E | — | `45` | — | — | — | — | — | — | — | — |
+| Outer wall | `speed_wall_0` | E | `25` | `30` | `25` | `30` | `25` | `18` | `18` | `22` | `25` | `30` |
+| Inner wall | `speed_wall_x` | E | — | — | — | `30` | — | — | — | — | — | `30` |
+| Top/bottom | `speed_topbottom` | E | — | `45` | — | `30` | — | — | — | — | — | `30` |
+| Initial layer | `speed_layer_0` | E | — | `20` | `20` | `20` | — | `15` | `15` | `20` | `20` | `20` |
+| Travel | `speed_travel` | E | `150` | `150` | `130` | `150` | `150` | `130` | `100` | `120` | `150` | `150` |
+| **Retraction & travel** | | | | | | | | | | | | |
+| Retract mm | `retraction_amount` | E | `1.0` | `1.0` | `1.2` | — | `1.5` | `1.5` | `0.6` | `1.5` | `1.0` | — |
+| Retract mm/s | `retraction_speed` | E | `40` | `40` | `35` | — | `35` | `35` | `25` | `35` | `35` | — |
+| Z hop | `retraction_hop_enabled` | E | `False` | `False` | `False` | `False` | `False` | `False` | `False` | `False` | `False` | `False` |
+| Extra prime mm3 | `retraction_extra_prime_amount` | E | — | — | — | — | `0.15` | `0.15` | — | — | — | — |
+| Combing mode | `retraction_combing` | G | `no_outer_surfaces` | — | — | — | — | — | — | `no_outer_surfaces` | `no_outer_surfaces` | — |
+| **Cooling** | | | | | | | | | | | | |
+| Fan % | `cool_fan_speed` | E | `100` | `100` | `40` | `100` | `100` | `40` | `40` | `20` | `100` | `100` |
+| Fan, layer 1 % | `cool_fan_speed_0` | E | `0` | `0` | `0` | `0` | `0` | `0` | — | `0` | `0` | `0` |
+| Min layer time s | `cool_min_layer_time` | E | — | — | — | `3` | — | — | — | — | — | `3` |
+| **Surface & seam** | | | | | | | | | | | | |
+| Z seam | `z_seam_type` | E | `random` | `random` | — | — | `random` | `random` | — | `random` | `random` | — |
+| Monotonic top/bottom | `skin_monotonic` | E | `True` | — | — | — | — | — | — | — | `True` | — |
+| Ironing | `ironing_enabled` | E | `True` | — | — | — | — | — | — | — | — | — |
+| Ironing pattern | `ironing_pattern` | E | `concentric` | — | — | — | — | — | — | — | — | — |
+| Ironing flow % | `ironing_flow` | E | `8` | — | — | — | — | — | — | — | — | — |
+| Ironing inset mm | `ironing_inset` | E | `0.4` | — | — | — | — | — | — | — | — | — |
+| Iron top layer only | `ironing_only_highest_layer` | E | `True` | — | — | — | — | — | — | — | — | — |
+| **Dimensional compensation** | | | | | | | | | | | | |
+| Horizontal expansion | `xy_offset` | E | — | — | — | — | `0.15` | — | — | — | — | — |
+| Initial layer h. expansion | `xy_offset_layer_0` | E | `-0.2` | `-0.2` | — | — | — | — | — | — | — | — |
+| Hole expansion | `hole_xy_offset` | E | — | — | — | — | `0.15` | — | — | — | — | — |
+| **Adhesion** | | | | | | | | | | | | |
+| Build plate adhesion | `adhesion_type` | G | `brim` | `brim` | `brim` | `skirt` | `brim` | `brim` | — | `brim` | `skirt` | `skirt` |
+<!-- TABLE:END -->
 
 ## Live GUI overrides - these BEAT the table
 

@@ -10,7 +10,7 @@ INPUTS:    --cura   Cura config dir (default %APPDATA%\\cura\\5.13)
 FAILS WHEN: a profile file is missing (exit 4). An empty [values] section is
            legal and renders as an all-dash column - that is real state.
 """
-import argparse, configparser, os, sys
+import argparse, configparser, glob, os, sys
 
 PROFILES = [
     ("creality_base_extruder_0_%233_cr10max_pla.inst.cfg",      "creality_cr10max_cr10max_pla.inst.cfg",      "CR10 PLA 0.2"),
@@ -21,6 +21,8 @@ PROFILES = [
     ("creality_base_extruder_0_%232_ce3pro_petg.inst.cfg",      "creality_ender3pro_ce3pro_petg.inst.cfg",    "E3 PETG"),
     ("creality_base_extruder_0_%232_ce3pro_tpu.inst.cfg",       "creality_ender3pro_ce3pro_tpu.inst.cfg",     "E3 TPU"),
     ("creality_base_extruder_0_%232_ce3pro_nylon.inst.cfg",     "creality_ender3pro_ce3pro_nylon.inst.cfg",   "E3 NYLON"),
+    ("creality_base_extruder_0_%232_ce3pro_pla_06.inst.cfg",    "creality_ender3pro_ce3pro_pla_06.inst.cfg",  "E3 PLA 0.6"),
+    ("creality_base_extruder_0_%232_ce3pro_flowtest_06.inst.cfg","creality_ender3pro_ce3pro_flowtest_06.inst.cfg","E3 FLOW 0.6"),
 ]
 
 CATS = [
@@ -78,6 +80,14 @@ BLANK = "—"
 
 
 def load(qc):
+    # A new profile added in Cura must not vanish silently from the table.
+    known = {f for ex, gl, _ in PROFILES for f in (ex, gl)}
+    found = {os.path.basename(p) for p in glob.glob(os.path.join(qc, "*.inst.cfg"))}
+    orphans = sorted(found - known)
+    if orphans:
+        sys.exit(f"[5] profile files on disk not listed in PROFILES: {orphans}\n"
+                 f"    Add them to PROFILES (extruder file, global file, column header).")
+
     merged = {}
     for ex, gl, hdr in PROFILES:
         vals = {}
